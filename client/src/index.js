@@ -2,6 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.js'
+import Demo from './components/Demo'
+
+import { Provider } from 'react-redux'
+import { createStore } from "redux";
+
+import UserDataReducer from "./common/UserReducer";
+
 
 // function formatName(user) {
 //   return user.address.city  
@@ -65,4 +72,9 @@ import App from './App.js'
 // reportWebVitals();
 //const Completionist = () => <span>You are good to go!</span>;
 
-ReactDOM.render( <App />, document.getElementById('root'));
+
+const store = createStore(UserDataReducer);
+
+ReactDOM.render(  <Provider store={store}>
+    <Demo />
+  </Provider>, document.getElementById('root'));
