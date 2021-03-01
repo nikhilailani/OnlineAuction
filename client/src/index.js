@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App.js'
-import Demo from './components/Demo'
+//import App from './App.js'
+import ActiveBids from './components/Active-bids'
 
 import { Provider } from 'react-redux'
 import { createStore } from "redux";
@@ -76,5 +76,5 @@ import UserDataReducer from "./common/UserReducer";
 const store = createStore(UserDataReducer);
 
 ReactDOM.render(  <Provider store={store}>
-    <Demo />
+    <ActiveBids />
   </Provider>, document.getElementById('root'));

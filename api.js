@@ -5,6 +5,7 @@ const User = require('./model/user')
 const Product = require('./model/Product')
 const multer = require('multer')
 let path = require('path');
+const EmailService = require("./EmailService");
 
 
 
@@ -151,8 +152,113 @@ router.post('/upload', (req, res) => {
 //            .then(() => res.json('User Added'))
 //            .catch(err => res.status(400).json('Error: ' + err));
 // });
-    
 
+router.post('/addProduct', (req, res) => {
+    // 'profile_pic' is the name of our file input field in the HTML form
+    let upload = multer({ storage: storage, fileFilter: fileFilter }).single('image1');
+
+    upload(req, res, function(err) {
+        // req.file contains information of uploaded file
+        // req.body contains information of text fields, if there were any
+
+        if (req.fileValidationError) {
+            return res.send(req.fileValidationError);
+        }
+        else if (!req.file) {
+        
+            return res.send('Please select an image to upload');
+        }
+        else if (err instanceof multer.MulterError) {
+            return res.send(err);
+        }
+        else if (err) {
+            return res.send(err);
+        }
+
+        // Display uploaded image for user validation
+        
+        res.send(`You have uploaded this image: `);
+        console.log(req.file.filename)
+
+        
+        const newProductData = {
+                    name:req.body.name,
+                    category:req.body.category,
+                    brand:req.body.brand,
+                    minBidPrice:req.body.minBidPrice,
+                    bidDate : req.body.bidDate,
+                    image1 : req.file.filename
+                }
+        
+        const newProduct = new Product(newProductData);
+
+        newProduct.save()
+        .then(() => console.log(`Image ${image1} added succesfully`))
+        .catch(err => res.status(400).json('Error: ' + err));
+        
+    });
+});
+
+router.get('/Products', function (req, res) {
+    
+        Product.find({},function(err,ProductList){
+            if(err){
+                res.send(400)
+            }
+            else{
+                res.send(ProductList)
+                
+            }
+        })
+
+})
+
+router.post('/appenduser',(req,res) => {
+    
+    Product.findOneAndUpdate(
+        { _id: req.body._id }, 
+        { $push: { usersToNotify: req.body.id  } },
+       function (error, success) {
+             if (error) {
+                 console.log(err);
+             } else {
+                 const call = EmailService.sendMail(req.body.email)
+                 console.log(req.body.email)
+                 console.log("User Added");
+
+             }
+         });
+     
+
+})
+
+router.get('/active-bids', (req,res) => {
+    console.log(new Date().toString())
+    var d = new Date().toISOString().slice(0,10);
+    
+    Product.find({ "bidDate" : d } , (err,ProductList) => {
+        if(err){
+            console.log(err)
+        }
+        else{
+            res.send(ProductList)
+            console.log("----")
+            console.log(ProductList)
+            console.log("----")
+        }
+    })
+   
+})
+
+
+//  Product.findOne({cond1 : req.body.cond1},(error,data)=>{
+//     if(error){
+
+//     }
+//     else{
+//         res.send(data)
+//     }
+// })
 
 
 

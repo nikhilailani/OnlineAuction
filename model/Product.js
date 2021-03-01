@@ -6,12 +6,14 @@ const productSchema = new Schema({
     category : String,
     name : String,
     brand: String,
+
+    owner : String,
     
     minBidPrice : Number,
     bidDate : Date,
     bidDuration : Number,
     
-    usesToNotify : Array,
+    usersToNotify : Array,
     
  
 
@@ -21,7 +23,7 @@ const productSchema = new Schema({
 
 
 
-    photo: String
+    image1: String
 
 })
 

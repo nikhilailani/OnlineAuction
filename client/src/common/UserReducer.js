@@ -1,6 +1,7 @@
 
 const initState = {
-    count : 10
+    id : "601182823e4486202fe5772a",
+    email : "vatsalprajapati27@gmail.com"
 }
 
 const UserReducer = (state = initState,action) => {
@@ -9,7 +10,7 @@ const UserReducer = (state = initState,action) => {
          case "INCREASE":
             
             return {
-                count : state.count + parseInt(action.payload)
+                id : parseInt(action.payload)
             }
             
              

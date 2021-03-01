@@ -33,7 +33,7 @@ class Demo extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    count : state.count
+    count : state.id
 })
 
 export default connect(mapStateToProps)(Demo);
