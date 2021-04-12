@@ -1,27 +1,31 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar'
-import { BrowserRouter,Route } from 'react-router-dom';
-import About from './components/About';
-import Home from './components/Home';
-import Login from './components/Login'
-import Timer from './components/Timer';
-
+import { BrowserRouter,Route, Router, Switch } from 'react-router-dom';
+import Layout from './components/Layout'
+import FirstPage from './components/FirstPage';
+import Home from './components/Home'
+import About from './components/About'
+import Login from './components/Login';
 
 
 
 function App() {
   return (
-    <BrowserRouter>    <div className="App">
-            <Navbar />
-            <Route exact path="/" component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/about" component={About} />
-            <Route path="/timer" component={Timer} />
-            
-    </div>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+       
+          <Navbar />
 
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/about' exact component={About} />
+            <Route path='/login' exact component={Login} />
+          </Switch> 
+        
+
+       </BrowserRouter> 
+</div>
   );
 }
 

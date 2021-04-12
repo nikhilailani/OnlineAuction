@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import Timer from './Timer'
+import { Redirect, Switch } from "react-router";
+import { BrowserRouter,Route } from 'react-router-dom';
+import {Link} from 'react-router-dom'
+import Productdetails from './Product-details'
 
 
 function importAll(r) {
@@ -37,6 +41,15 @@ class ActiveBids extends Component {
     handleClick(e,_id) {
         console.log("Okay")
     }
+
+    handlebuttonClick(e){
+
+        return <Redirect to ="/login" />
+
+
+
+
+    }
     
     render() {
         
@@ -50,6 +63,13 @@ class ActiveBids extends Component {
                 <p>Bidding date {item.bidDate}</p>
                 <p>{item.image1}</p>
                 <p>Ends In <Timer /></p>
+            
+                <BrowserRouter>
+                <Link to="/Productdetails" >Click</Link>
+                <Switch>
+                <Route exact path="/Productdetails" > <Productdetails /></Route>
+                </Switch>
+                </BrowserRouter>
                 <button type="button" name="a" onClick={(e)=>this.handleClick(e,item._id)}  >Bid Now</button>
 
                 {/* <img src={require(item.image1).default} alt="abcs" />  */}

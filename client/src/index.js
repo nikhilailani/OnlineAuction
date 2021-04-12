@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import App from './App.js'
-import ActiveBids from './components/Active-bids'
+import App from './App.js'
+// import ActiveBids from './components/Active-bids'
 
 import { Provider } from 'react-redux'
 import { createStore } from "redux";
-
 import UserDataReducer from "./common/UserReducer";
 
+import { Router } from "react-router-dom"
+import createHistory from 'history/createBrowserHistory'
+
+const history = createHistory()
 
 // function formatName(user) {
 //   return user.address.city  
@@ -76,5 +79,4 @@ import UserDataReducer from "./common/UserReducer";
 const store = createStore(UserDataReducer);
 
 ReactDOM.render(  <Provider store={store}>
-    <ActiveBids />
-  </Provider>, document.getElementById('root'));
+  <App /></Provider>, document.getElementById('root'));

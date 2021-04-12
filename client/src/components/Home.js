@@ -1,5 +1,7 @@
 import React from 'react';
-
+import FirstPage from './FirstPage'
+import HomeItems from './HomeItems'
+import Footer from './Footer'
 
 class Home extends React.Component {
     state ={
@@ -32,14 +34,12 @@ class Home extends React.Component {
     render(){
         return(
             <div>
-                <form onSubmit={(e)=>this.handleSubmit(e)}>
-                    <input type="text" name="firstName" value={this.state.firstName} onChange={(e)=>this.setState({firstName:e.target.value})}></input>
-                    <input type="text" name="lastName" value={this.state.lastName} onChange={(e)=>this.setState({lastName:e.target.value})}></input>
-                    <input type="text" name="Email" value={this.state.Email} onChange={(e)=>this.setState({Email:e.target.value})}></input>
-                    <input type="text" name="Mobile" value={this.state.Mobile} onChange={(e)=>this.setState({Mobile:e.target.value})}></input>
+                <HomeItems />
 
-                    <button type="submit" className="waves-effect waves-light btn" >Add</button>
-                </form>
+                <FirstPage />
+
+                <Footer />
+
             </div>
         );
         

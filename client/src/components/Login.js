@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link, Route } from 'react-router-dom';
 
 class Login extends React.Component {
 
@@ -10,8 +10,7 @@ class Login extends React.Component {
 
     handleSubmit(e){
 
-        console.log("Hello");
-        <Redirect to="/" />
+        this.props.history.push("/");
 
 
 

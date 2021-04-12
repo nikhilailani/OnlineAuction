@@ -1,0 +1,72 @@
+.caption {
+  color: #512549;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.2rem;
+  font-weight: 600;
+}
+.text-black {
+  font-size: 2rem;
+}
+
+.step,
+.service {
+  position: relative;
+}
+.text-black {
+  color: #000 !important;
+}
+
+.step h3,
+.service h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.step .wrap-icon,
+.steplast .wrap-icon,
+.service .wrap-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  line-height: 90px;
+  text-align: center;
+  display: inline-block;
+  background: #b983ad;
+  color: #fff;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.select-wrap,
+.wrap-icon {
+  position: relative;
+}
+
+.step p,
+.service p {
+  line-height: 1.5;
+  color: #512549;
+}
+
+.step h3,
+.steplast h3,
+.service h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #512549;
+  margin-bottom: 20px;
+}
+
+.step:after {
+  position: absolute;
+  content: ">";
+  top: 10%;
+  font-size: 22px;
+  color: black;
+  right: 20%;
+  font-family: "icomoon";
+  font-weight: 800;
+}
